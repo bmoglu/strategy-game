@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
         _soldier = GameObject.Find("SoldierHolder").GetComponent<Transform>();
     }
 
-
     private void Update()
     {
         HandleEscape();
@@ -39,8 +38,6 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnSoldier()
     {
-       LevelManager.Instance.GeneratePath();
-
         var soldierIndex = 0;
 
         string type = string.Empty;
@@ -53,7 +50,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         //Request from pool
-        ObjectPool.Instance.GetObject(type, _soldier).GetComponent<Soldier>().SpawnScale();
+        ObjectPool.Instance.GetObject(type, _soldier).GetComponent<Soldier>();
 
         yield return new WaitForSeconds(2.5f);
 

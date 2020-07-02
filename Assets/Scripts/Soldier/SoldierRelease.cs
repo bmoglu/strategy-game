@@ -16,7 +16,7 @@ public class SoldierRelease : MonoBehaviour
         if (gameObject.activeInHierarchy && !IsPooled)
         {
             //5 sec after gameObject send the pool
-            Invoke(nameof(Release), 5f);
+            Invoke(nameof(Release), 25f);
             //For update control
             IsPooled = true;
         }

@@ -2,13 +2,17 @@
 
 public class SoldierTileInteraction : MonoBehaviour
 {
+    public Point SoldierPoint { get; set; }
+
     //When soldier stay the tile , set tile full and not walkable
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<TileScript>())
         {
-            other.gameObject.GetComponent<TileScript>().IsEmpty = false;
-            other.gameObject.GetComponent<TileScript>().Walkable = false;
+            var tile = other.gameObject.GetComponent<TileScript>();
+            tile.IsEmpty = false;
+            tile.Walkable = false;
+            SoldierPoint = tile.GridPosition;
         }
     }
 
@@ -17,8 +21,9 @@ public class SoldierTileInteraction : MonoBehaviour
     {
         if (other.gameObject.GetComponent<TileScript>())
         {
-            other.gameObject.GetComponent<TileScript>().IsEmpty = true;
-            other.gameObject.GetComponent<TileScript>().Walkable = true;
+            var tile = other.gameObject.GetComponent<TileScript>();
+            tile.IsEmpty = true;
+            tile.Walkable = true;
         }
     }
 }

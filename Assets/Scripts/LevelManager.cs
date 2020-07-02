@@ -23,20 +23,6 @@ public class LevelManager : Singleton<LevelManager>
 
     private Point mapSize;
 
-    private Stack<Node> path;
-
-    public Stack<Node> Path
-    {
-        get
-        {
-            if (path == null)
-            {
-                GeneratePath();
-            }
-            return new Stack<Node>(new Stack<Node>(path));
-        }
-    }
-
     private void Start()
     {
         //Executes the create level
@@ -81,13 +67,6 @@ public class LevelManager : Singleton<LevelManager>
     public bool InBounds(Point position)
     {
         return position.X >= 0 && position.Y >= 0 && position.X < mapSize.X && position.Y < mapSize.Y;
-    }
-
-    //Generate path for soldier move
-    public void GeneratePath()
-    {
-        //first position and last position for path
-        path = AStar.GetPath(new Point(0,0), new Point(3,3));
     }
 
 }
